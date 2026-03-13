@@ -11,27 +11,27 @@ permissions:
   contents: write
   actions: write
 
-on:
+于:
   workflow_call:
     inputs:
       # ==================== 基础配置 ====================
       android_version:
         required: true
-        type: string
+        输入: string
       kernel_version:
         required: true
-        type: string
+        输入: string
       sub_level:
         required: true
-        type: string
+        输入: string
       os_patch_level:
         required: true
-        type: string
+        输入: string
 
       # ==================== KernelSU 配置 ====================
       ksu_variant:
         required: true
-        type: string
+        输入: string
       ksu_branch:
         required: true
         type: string
@@ -880,7 +880,7 @@ jobs:
         if: inputs.use_bbg
         working-directory: ${{ env.KERNEL_ROOT }}
         run: |
-          wget -O- https://github.com/vc-teahouse/Baseband-guard/raw/main/setup.sh | bash
+          wget -O- https://github.com/az-zc/Baseband-guard/raw/main/setup.sh | bash
           echo "CONFIG_BBG=y" >> common/arch/arm64/configs/gki_defconfig
           sed -i '/^config LSM$/,/^help$/{ /^[[:space:]]*default/ { /baseband_guard/! s/selinux/selinux,baseband_guard/ } }' common/security/Kconfig
 
